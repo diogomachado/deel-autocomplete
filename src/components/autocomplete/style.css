@@ -1,0 +1,33 @@
+.autocomplete {
+  width: 400px;
+}
+
+.autocomplete input {
+  padding: 1rem;
+  border-radius: 8px;
+  outline: none;
+  border: 1px #c9c9c9 solid;
+  width: 100%;
+  transition: all 200ms ease;
+  font-size: 17px;
+  margin-bottom: 1rem;
+  background: white;
+}
+
+.autocomplete input:hover,
+.autocomplete input:focus {
+  border-color: #2c70f0;
+  outline: none;
+}
+
+.autocomplete .item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 6px;
+}
+
+.autocomplete .item > .title,
+.autocomplete .item .description {
+  margin: 0;
+}
