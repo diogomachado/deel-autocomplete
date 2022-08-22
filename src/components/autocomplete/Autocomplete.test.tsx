@@ -24,9 +24,9 @@ describe('Autocomplete component', () => {
     ).not.toBeInTheDocument()
   })
 
-  it('should have a placeholder `Search by author`', () => {
+  it('should have a placeholder `Search movie reviews`', () => {
     render(<Autocomplete handleSubmit={handleSubmit} />)
-    const block = screen.getByPlaceholderText('Search by author')
+    const block = screen.getByPlaceholderText('Search movie reviews')
     expect(block).toBeInTheDocument()
   })
 

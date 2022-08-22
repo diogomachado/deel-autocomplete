@@ -36,7 +36,7 @@ export default function Autocomplete(props: AutocompleteProps) {
         value={term}
         onChange={(event) => handleChange(event)}
         data-testid='autocomplete-input'
-        placeholder='Search by author'
+        placeholder='Search movie reviews'
         autoFocus={true}
       />
 
