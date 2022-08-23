@@ -34,6 +34,9 @@ function App() {
           setItems(moviesFactory)
           setIsLoading(false)
           setIsDoneFetch(true)
+        } else {
+          setIsLoading(false)
+          setIsDoneFetch(true)
         }
       })
     )

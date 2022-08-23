@@ -18,6 +18,13 @@ body {
 :root {
   --primaryColor: #15357a;
   --secondaryColor: #2c70f0;
+  --highlightColor: #fbbf24;
+  --linkColor: #0270e0;
+}
+
+mark {
+  background-color: var(--highlightColor);
+  border-radius: 2px;
 }
 
 .wrapper {
@@ -25,5 +32,5 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
-  padding-top: 1rem;
+  padding-top: 290px;
 }

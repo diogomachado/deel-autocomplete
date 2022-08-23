@@ -3,8 +3,22 @@
   position: relative;
 }
 
+.autocomplete-wrapper {
+  position: relative;
+}
+
+i.search {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.93103 11.2429C4.22369 13.5355 7.79908 13.783 10.3685 11.9764C10.4135 11.9472 10.4517 11.9111 10.4967 11.8819C10.7599 11.693 11.0074 11.4814 11.2438 11.243C11.4958 10.991 11.7185 10.7278 11.9165 10.4511C11.9367 10.4219 11.9569 10.3971 11.9704 10.3679C13.7816 7.79398 13.541 4.22783 11.2414 1.93043C8.6675 -0.643477 4.49586 -0.643477 1.92646 1.93043C-0.64291 4.49964 -0.64291 8.66875 1.93101 11.243L1.93103 11.2429ZM3.30352 3.30039C5.11468 1.48248 8.05783 1.48248 9.87349 3.30039C11.687 5.11155 11.687 8.0547 9.87349 9.87036C8.05558 11.6839 5.11476 11.6839 3.30352 9.87036C1.48561 8.05466 1.48561 5.11163 3.30352 3.30039V3.30039Z' fill='%23333333'/%3E%3Cpath d='M12.3505 10.6984C12.3415 10.7141 12.3302 10.7276 12.3213 10.7435C12.1075 11.0404 11.8713 11.3217 11.599 11.5962C11.3358 11.8594 11.0703 12.0866 10.7868 12.2847C10.7576 12.305 10.7283 12.3298 10.6969 12.35L15.3118 17.5386C15.926 18.1529 16.925 18.1529 17.5393 17.5386C18.1536 16.9243 18.1536 15.9299 17.5393 15.3111L12.3505 10.6984Z' fill='%23333333'/%3E%3C/svg%3E%0A");
+}
+
 .autocomplete input {
-  padding: 1rem;
+  padding: 1rem 1rem 1rem calc(1rem + 26px);
   border-radius: 8px;
   outline: none;
   border: 1px #c9c9c9 solid;
@@ -23,6 +37,20 @@
   position: absolute;
   right: 1.15rem;
   top: 1.15rem;
+  background: white;
+}
+.autocomplete-loading p {
+  margin: 0;
+  animation: opacityEffect 1s ease both infinite;
+}
+
+@keyframes opacityEffect {
+  from {
+    opacity: 0.25;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .autocomplete-results {
@@ -58,4 +86,19 @@
   margin-bottom: 0.5rem;
   font-size: 18.5px;
   color: #131533;
+}
+
+.autocomplete .item .link {
+  text-decoration: none;
+  color: var(--linkColor);
+  font-weight: bold;
+}
+
+.autocomplete-feedback {
+  text-align: center;
+  padding: 26px 0;
+}
+
+.autocomplete-feedback p {
+  font-size: 16px;
 }

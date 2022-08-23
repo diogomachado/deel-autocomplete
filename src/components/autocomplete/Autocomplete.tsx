@@ -34,22 +34,25 @@ export default function Autocomplete(props: AutocompleteProps) {
 
   return (
     <form data-testid='autocomplete' className='autocomplete'>
-      <input
-        type='search'
-        value={term}
-        onChange={(event) => handleChange(event)}
-        data-testid='autocomplete-input'
-        placeholder='Search movie reviews'
-        autoFocus={true}
-        disabled={props.isDisabled}
-      />
+      <div className='autocomplete-wrapper'>
+        <i className='search'></i>
+        <input
+          type='search'
+          value={term}
+          onChange={(event) => handleChange(event)}
+          data-testid='autocomplete-input'
+          placeholder='Search movie reviews'
+          autoFocus={true}
+          disabled={props.isDisabled}
+        />
+      </div>
 
       {props.isLoading ? (
         <div
           className='autocomplete-loading'
           data-testid='autocomplete-loading'
         >
-          Loading...
+          <p>Loading...</p>
         </div>
       ) : null}
 
@@ -72,8 +75,13 @@ export default function Autocomplete(props: AutocompleteProps) {
                       __html: item.title
                     }}
                   />
-                  <a target='_blank' rel='noreferrer' href={item.link}>
-                    Open the article
+                  <a
+                    className='link'
+                    target='_blank'
+                    rel='noreferrer'
+                    href={item.link}
+                  >
+                    View article
                   </a>
                 </div>
               </div>
@@ -83,7 +91,12 @@ export default function Autocomplete(props: AutocompleteProps) {
           {props.items?.length === 0 &&
           !props.isLoading &&
           props.isDoneFetch ? (
-            <p data-testid='autocomplete-feedback'>No results</p>
+            <p
+              className='autocomplete-feedback'
+              data-testid='autocomplete-feedback'
+            >
+              No results were found.
+            </p>
           ) : null}
         </div>
       ) : null}
