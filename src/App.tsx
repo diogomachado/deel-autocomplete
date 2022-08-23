@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Autocomplete from './components/autocomplete/Autocomplete'
 import { Item } from './models/item'
 import { ItemFactory } from './models/item.factory'
@@ -20,21 +20,6 @@ function App() {
 
   function handleSearchAPI(term: string) {
     setIsLoading(true)
-
-    // console.log('App component searching...', term)
-    // const dataItems = [
-    //   {
-    //     id: 1,
-    //     title: 'Movie 1',
-    //     link: 'https://developer.nytimes.com/docs/books-product/1/overview'
-    //   },
-    //   {
-    //     id: 2,
-    //     title: 'Movie 2',
-    //     link: 'https://developer.nytimes.com/docs/books-product/1/overview'
-    //   }
-    // ]
-    // setItems(term ? dataItems : [])
 
     // Call to API NYC
     fetch(
