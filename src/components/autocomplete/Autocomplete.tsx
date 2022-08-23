@@ -1,36 +1,39 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
+import useDebounce from '../../hooks/useDebounce'
 import { Item } from '../../models/item'
 import './style.css'
 
 interface AutocompleteProps {
+  debounceTime?: number
+  isDoneFetch?: boolean
+  isLoading?: boolean
+  isDisabled?: boolean
   items?: Array<Item>
-  handleSubmit: (term: string) => any
+  handleChange: (term: string) => any
+  handleEmpty: () => any
 }
 
 export default function Autocomplete(props: AutocompleteProps) {
   const [term, setTerm] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const debounced = useDebounce(term, props.debounceTime || 1000)
 
-  function handleAutocomplete(term: string, e: FormEvent) {
-    e.preventDefault()
-    setSubmitted(term === '' ? false : true)
-    props.handleSubmit(term)
-  }
-
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    const value = e.target.value
-    if (value === '') {
-      setSubmitted(false)
-    }
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    // Set the value typed on the state
+    const value = event.target.value
     setTerm(value)
   }
 
+  useEffect(() => {
+    console.log(debounced)
+    if (debounced === '') {
+      props.handleEmpty()
+    } else {
+      props.handleChange(debounced)
+    }
+  }, [debounced])
+
   return (
-    <form
-      onSubmit={(e) => handleAutocomplete(term, e)}
-      data-testid='autocomplete'
-      className='autocomplete'
-    >
+    <form data-testid='autocomplete' className='autocomplete'>
       <input
         type='search'
         value={term}
@@ -38,9 +41,19 @@ export default function Autocomplete(props: AutocompleteProps) {
         data-testid='autocomplete-input'
         placeholder='Search movie reviews'
         autoFocus={true}
+        disabled={props.isDisabled}
       />
 
-      {submitted ? (
+      {props.isLoading ? (
+        <div
+          className='autocomplete-loading'
+          data-testid='autocomplete-loading'
+        >
+          Loading...
+        </div>
+      ) : null}
+
+      {props?.isDoneFetch ? (
         <div
           className='autocomplete-results'
           data-testid='autocomplete-results'
@@ -59,13 +72,17 @@ export default function Autocomplete(props: AutocompleteProps) {
                       __html: item.title
                     }}
                   />
-                  <p className='description'>{item.description}</p>
+                  <a target='_blank' rel='noreferrer' href={item.link}>
+                    Open the article
+                  </a>
                 </div>
               </div>
             )
           })}
 
-          {!props.items && submitted ? (
+          {props.items?.length === 0 &&
+          !props.isLoading &&
+          props.isDoneFetch ? (
             <p data-testid='autocomplete-feedback'>No results</p>
           ) : null}
         </div>

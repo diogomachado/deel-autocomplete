@@ -1,5 +1,6 @@
 .autocomplete {
   width: 400px;
+  position: relative;
 }
 
 .autocomplete input {
@@ -10,8 +11,25 @@
   width: 100%;
   transition: all 200ms ease;
   font-size: 17px;
-  margin-bottom: 1rem;
   background: white;
+}
+
+.autocomplete input:disabled {
+  cursor: not-allowed;
+  background: #f9f9f9;
+}
+
+.autocomplete-loading {
+  position: absolute;
+  right: 1.15rem;
+  top: 1.15rem;
+}
+
+.autocomplete-results {
+  box-shadow: 0px 9px 20px 3px #00000029;
+  border-radius: 0 0 12px 12px;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .autocomplete input:hover,
@@ -22,12 +40,22 @@
 
 .autocomplete .item {
   display: flex;
-  gap: 12px;
   align-items: center;
-  padding: 6px;
+  padding: 16px;
+  border-bottom: 1px #f2f2f2 solid;
 }
 
-.autocomplete .item > .title,
-.autocomplete .item .description {
+.autocomplete .item:last-child {
+  padding: 16px;
+}
+
+.autocomplete .item > .title {
   margin: 0;
+}
+
+.autocomplete .item .title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 18.5px;
+  color: #131533;
 }
