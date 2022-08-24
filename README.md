@@ -1,5 +1,8 @@
 # Movies Search
 
+The goal of this project is to search autocomplete movie reviews from New York Times API.
+![Preview the application](./assets_readme/preview.gif)
+
 ## Running the project (npm or yarn)
 
 ```
@@ -26,9 +29,9 @@ REACT_APP_API_KEY="<<TOKEN_HERE>>"
 
 To test using a real API, you can set up a new account on https://developer.nytimes.com/ following the steps bellow:
 
-![Step 1](./times-001.png)
-![Step 2](./times-002.png)
-![Step 3](./times-003.png)
+![Step 1](./assets_readme/times-001.png)
+![Step 2](./assets_readme/times-002.png)
+![Step 3](./assets_readme/times-003.png)
 
 After registered a new app, you need to copy the key
-![Step 3](./times-004.png)
+![Step 4](./assets_readme/times-004.png)
