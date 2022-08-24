@@ -7,7 +7,6 @@ interface AutocompleteProps {
   debounceTime?: number
   isDoneFetch?: boolean
   isLoading?: boolean
-  isDisabled?: boolean
   items?: Array<Item>
   handleChange: (term: string) => any
   handleEmpty: () => any
@@ -18,13 +17,10 @@ export default function Autocomplete(props: AutocompleteProps) {
   const debounced = useDebounce(term, props.debounceTime || 1000)
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    // Set the value typed on the state
-    const value = event.target.value
-    setTerm(value)
+    setTerm(event.target.value)
   }
 
   useEffect(() => {
-    console.log(debounced)
     if (debounced === '') {
       props.handleEmpty()
     } else {
@@ -43,7 +39,7 @@ export default function Autocomplete(props: AutocompleteProps) {
           data-testid='autocomplete-input'
           placeholder='Search movie reviews'
           autoFocus={true}
-          disabled={props.isDisabled}
+          disabled={props.isLoading}
         />
       </div>
 

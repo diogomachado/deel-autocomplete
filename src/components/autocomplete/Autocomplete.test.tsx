@@ -61,7 +61,7 @@ describe('Autocomplete component', () => {
     expect(screen.queryByTestId('autocomplete-results')).not.toBeInTheDocument()
   })
 
-  fit('should props.handleEmpty() when the user clear the input', async () => {
+  it('should props.handleEmpty() when the user clear the input', async () => {
     render(
       <Autocomplete handleChange={handleChange} handleEmpty={handleEmpty} />
     )

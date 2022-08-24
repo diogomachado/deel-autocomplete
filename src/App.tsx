@@ -32,19 +32,21 @@ function App() {
           })
           moviesFactory = Highlight(moviesFactory, term)
           setItems(moviesFactory)
-          setIsLoading(false)
-          setIsDoneFetch(true)
-        } else {
-          setIsLoading(false)
-          setIsDoneFetch(true)
         }
+        reset()
       })
     )
+  }
+
+  function reset() {
+    setIsLoading(false)
+    setIsDoneFetch(true)
   }
 
   return (
     <div className='wrapper'>
       <Autocomplete
+        debounceTime={600}
         items={items}
         isLoading={isLoading}
         isDoneFetch={isDoneFetch}
