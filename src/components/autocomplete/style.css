@@ -37,7 +37,7 @@ i.search {
   position: absolute;
   right: 1.15rem;
   top: 1.15rem;
-  background: white;
+  background: #f9f9f9;
 }
 .autocomplete-loading p {
   margin: 0;
@@ -58,6 +58,10 @@ i.search {
   border-radius: 0 0 12px 12px;
   max-height: 80vh;
   overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  background: white;
 }
 
 .autocomplete input:hover,
@@ -92,6 +96,11 @@ i.search {
   text-decoration: none;
   color: var(--linkColor);
   font-weight: bold;
+  transition: all 200ms ease;
+}
+
+.autocomplete .item .link:hover {
+  opacity: 0.77;
 }
 
 .autocomplete-feedback {

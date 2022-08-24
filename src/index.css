@@ -28,9 +28,21 @@ mark {
 }
 
 .wrapper {
+  display: flex;
   background: #fff;
   height: 100vh;
   display: flex;
   justify-content: center;
-  padding-top: 290px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.autocomplete-wrapper {
+  max-width: 420px;
+}
+
+.text-helper {
+  text-align: right;
+  font-size: 12px;
+  margin-top: 12px;
 }
